@@ -1,7 +1,10 @@
 const express = require('express');
+const logger = require('./middleware/logger');
 
 const app = express();
 const port = 3000;
+
+app.use(logger); // Use the logger middleware for all routes
 
 const products = [
   { id: 1, name: 'Product 1', price: 10 },
@@ -44,6 +47,7 @@ app.get('/products/:id', (req, res) => {
 
 app.post('/login', (req, res) => {
   res.send('this is login route');
+  //res.redirect('/products');
 }       
 );
 
